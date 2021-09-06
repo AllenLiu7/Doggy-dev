@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const PF = process.env.PUBLIC_FOLDER;
+
 interface Props {
   likes?: [];
 }
@@ -25,7 +27,7 @@ const Container = styled.div`
 `;
 
 const PostLike = styled.img.attrs({
-  src: '../../public/assets/like.png',
+  src: `${PF}like.png`,
   alt: 'like',
 })`
   height: 25px;
@@ -33,7 +35,7 @@ const PostLike = styled.img.attrs({
 `;
 
 const PostHeart = styled.img.attrs({
-  src: '../../public/assets/heart.png',
+  src: `${PF}heart.png`,
 })`
   height: 25px;
   margin-left: 6px;

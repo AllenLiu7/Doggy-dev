@@ -19,6 +19,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
@@ -41,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/public/index.html'), //point to the template for react
+      template: path.resolve(__dirname, './src/public/index.html'), //This plugin will generate index.html file in the same directory where our bundle.js is created by Webpack.
     }),
     new CleanWebpackPlugin(), //A webpack plugin to remove/clean your build folder(s).
     new Dotenv(),

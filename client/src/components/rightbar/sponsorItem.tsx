@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const PF = process.env.PUBLIC_FOLDER;
+
 export default function SponsorItem({ info, company }) {
   return (
     <Container>
@@ -26,7 +28,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img.attrs({
-  src: '../../public/assets/shoe1.jpg',
+  src: `${PF}shoe1.jpg`,
   alt: 'sponsor',
 })`
   // max-height: 150px;

@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const authenticateToken = require('./services/jwt');
 const userRouter = require('./routes/user.routers');
 const authRouter = require('./routes/auth.routers');
 const postRouter = require('./routes/post.routers');
@@ -22,16 +21,21 @@ app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/post', postRouter);
 app.use('/api/upload', uploadRouter);
-app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/api/assets', express.static(path.join(__dirname, 'public/assets')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 //Custom express error handler
 app.use((error, req, res, next) => {
-  res.status(error.status || 500);
+  res.status(error.status || 5000);
   res.json({
     status: error.status,
     message: error.message,

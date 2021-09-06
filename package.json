@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
-    "start": "npm run server & npm run client"
+    "dev": "npm run client & npm run server",
+    "start": "npm run server"
   },
   "author": "",
   "license": "ISC"

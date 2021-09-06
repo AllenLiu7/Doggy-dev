@@ -1,8 +1,11 @@
-import styled from 'styled-components';
-import { useState } from 'react';
-import BirthydayInfo from './birthydayInfo';
 import CloseIcon from '@material-ui/icons/Close';
+import { useState } from 'react';
+import styled from 'styled-components';
+
 import { StyledHr } from '../common/styled-components/hr';
+import BirthydayInfo from './birthydayInfo';
+
+const PF = process.env.PUBLIC_FOLDER;
 
 export default function BirthdayCard() {
   const [hover, setHover] = useState(false);
@@ -40,7 +43,7 @@ const StyledCancel = styled(CloseIcon)`
 `;
 
 const PartyImage = styled.img.attrs({
-  src: '../../public/assets/birthday.jpg',
+  src: `${PF}birthday.jpg`,
   alt: 'gift',
 })`
   width: 100%;

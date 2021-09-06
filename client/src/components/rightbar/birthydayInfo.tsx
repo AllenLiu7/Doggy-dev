@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const PF = process.env.PUBLIC_FOLDER;
+
 export default function BirthydayInfo({ bDayFriend, numBDay }) {
   return (
     <Container>
@@ -20,7 +22,7 @@ const Container = styled.div`
 `;
 
 const GiftImage = styled.img.attrs({
-  src: '../../public/assets/gift.png',
+  src: `${PF}gift.png`,
   alt: 'gift',
 })`
   height: 50px;
