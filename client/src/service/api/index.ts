@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosClient = axios.create({
-  baseURL: `http://localhost:8000/api`,
+  baseURL: `/api`,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -9,7 +9,7 @@ export const axiosClient = axios.create({
 });
 
 export const axiosJWT = axios.create({
-  baseURL: `http://localhost:8000/api`,
+  baseURL: `/api`,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
