@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const client = require('../services/redis');
 const { v4: uuidv4 } = require('uuid');
+const accessSecret = process.env.JWT_ACCESS;
+const refreshSecret = process.env.JWT_REFRESH;
 
 const verifyAccessToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -8,7 +10,7 @@ const verifyAccessToken = (req, res, next) => {
 
   if (token == null) return res.status(401).send('No token');
 
-  jwt.verify(token, 'theSecretKey', (err, payload) => {
+  jwt.verify(token, accessSecret, (err, payload) => {
     if (err) return res.status(403).send('Token is not valid');
 
     next();
@@ -20,7 +22,7 @@ const verifyRefreshToken = (req, res, next) => {
   if (token == null) return res.status(401).send('No token');
 
   try {
-    jwt.verify(token, 'theSecretRefreshKey', (err, payload) => {
+    jwt.verify(token, refreshSecret, (err, payload) => {
       //console.log(err);
 
       if (err) return res.status(403).send('RefreshToken is not valid');
@@ -55,14 +57,14 @@ const verifyRefreshToken = (req, res, next) => {
 
 //JWT token payload: {id: userId, ...others}
 const genAccessToken = (userId) => {
-  return jwt.sign({ id: userId }, 'theSecretKey', {
+  return jwt.sign({ id: userId }, accessSecret, {
     expiresIn: '30s',
   });
 };
 
 const genRefreshToken = (userId) => {
   const uuid = uuidv4();
-  const refreshToken = jwt.sign({ id: userId, uuid }, 'theSecretRefreshKey', {
+  const refreshToken = jwt.sign({ id: userId, uuid }, refreshSecret, {
     expiresIn: '15m',
   });
   client.set(userId.toString(), refreshToken, (err, reply) => {
