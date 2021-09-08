@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const BASE_URL = process.env.BASE_URL;
+
 export const axiosClient = axios.create({
-  baseURL: `/api`,
+  baseURL: BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -9,7 +11,7 @@ export const axiosClient = axios.create({
 });
 
 export const axiosJWT = axios.create({
-  baseURL: `/api`,
+  baseURL: BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
