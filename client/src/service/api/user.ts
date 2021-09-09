@@ -10,8 +10,8 @@ export const editProfileReq = (data) => {
   });
 };
 
-export const getFollowingUsersReq = () => {
-  return axiosClient.get('user/60ed4aa170b49b2b843f43d6/followings');
+export const getFollowingUsersReq = (id) => {
+  return axiosClient.get(`user/${id}/followings`);
 };
 
 export const getRecommandUsersReq = (id) => {

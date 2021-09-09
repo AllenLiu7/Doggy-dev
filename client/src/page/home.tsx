@@ -20,7 +20,7 @@ export default function Home() {
   const { currentUser } = useSelector(currentUserSelector);
 
   useEffect(() => {
-    dispatch(fetchFollowingUsers());
+    dispatch(fetchFollowingUsers(currentUser._id));
     dispatch(fetchTimelinePosts(currentUser._id));
     dispatch(fetchRecommandUsers(currentUser._id));
   }, []);

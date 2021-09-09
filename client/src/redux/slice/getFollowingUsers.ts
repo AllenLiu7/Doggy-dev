@@ -11,9 +11,9 @@ export const initialState = {
 //Async Thunk Action
 export const fetchFollowingUsers = createAsyncThunk(
   'userFollowings/fetchFollowings', //name of your slice plus the name of thunk creator
-  async () => {
+  async (id) => {
     try {
-      const response = await getFollowingUsersReq();
+      const response = await getFollowingUsersReq(id);
       return response.data;
     } catch (error) {
       throw Error(`${error}`);

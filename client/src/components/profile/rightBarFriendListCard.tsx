@@ -11,11 +11,21 @@ export default function RightBarFriendListCard() {
   return (
     <CustomCard>
       <Title>Friends</Title>
-      <Content>
+      {followings.length > 0 ? (
+        <Content>
+          {followings.map((user, i) => (
+            <ProfilePicNameBig key={i} user={user} />
+          ))}
+        </Content>
+      ) : (
+        <p>Find some friends!</p>
+      )}
+
+      {/* <Content>
         {followings.map((user, i) => (
           <ProfilePicNameBig key={i} user={user} />
         ))}
-      </Content>
+      </Content> */}
     </CustomCard>
   );
 }
@@ -23,6 +33,7 @@ export default function RightBarFriendListCard() {
 const CustomCard = styled(Card)`
   padding: 20px;
   margin-bottom: 30px;
+  height: auto;
 `;
 
 const Title = styled.div`
@@ -36,7 +47,7 @@ const Content = styled.div`
   width: 100%;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: min-content 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 15px;
 `;

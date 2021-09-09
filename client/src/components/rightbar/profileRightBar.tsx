@@ -26,6 +26,7 @@ interface Props {
 export default function ProfileRightBar({ editHandler, isEdit }: Props) {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(currentUserSelector);
+  const { _id: id } = currentUser;
   const { isCurrentUser, paramId } = useDefineUser(currentUser);
 
   const [isFollowed, setIsFollowed] = useState<boolean | null>(null);
@@ -39,16 +40,16 @@ export default function ProfileRightBar({ editHandler, isEdit }: Props) {
 
   const handleClick = async () => {
     if (isFollowed) {
-      await _unfollowUser(currentUser._id, paramId);
+      await _unfollowUser(id, paramId);
       dispatch(unfollow(paramId));
-      dispatch(fetchTimelinePosts(currentUser._id));
-      dispatch(fetchFollowingUsers());
+      dispatch(fetchTimelinePosts(id));
+      dispatch(fetchFollowingUsers(id));
       return setIsFollowed(false);
     }
-    await _followUser(currentUser._id, paramId);
+    await _followUser(id, paramId);
     dispatch(follow(paramId));
-    dispatch(fetchTimelinePosts(currentUser._id));
-    dispatch(fetchFollowingUsers());
+    dispatch(fetchTimelinePosts(id));
+    dispatch(fetchFollowingUsers(id));
     return setIsFollowed(true);
   };
 
