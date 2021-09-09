@@ -18,6 +18,7 @@ export default function SideBarFriendList() {
               name={user.username}
               src={user.profilePicture}
               key={index}
+              id={user._id}
             />
           </ProfilePicNameWrap>
         </Link>

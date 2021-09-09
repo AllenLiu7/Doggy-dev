@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-const PF = process.env.PROFILE_PIC;
+const IMAGE = process.env.S3_IMAGES;
 
 export const StyledProfilePic = styled.img.attrs(
   ({ src, userId, height, width, borderRadius }) => ({
     src: src
-      ? PF + src
+      ? IMAGE + src
       : `https://avatars.dicebear.com/api/bottts/${userId}.svg`,
     alt: 'User',
     height: height || '30px',

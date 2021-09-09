@@ -58,9 +58,7 @@ export default function PostCard({ post }) {
         <PostContent>
           <DescWrap>{desc}</DescWrap>
           <ImgWrapper>
-            {img ? (
-              <StyledImg src={process.env.PUBLIC_FOLDER + '/post/' + img} />
-            ) : null}
+            {img ? <StyledImg src={`${process.env.S3_IMAGES}${img}`} /> : null}
           </ImgWrapper>
 
           <PostBottomWrap>
