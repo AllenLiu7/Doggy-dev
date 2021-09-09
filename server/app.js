@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth.routers');
 const postRouter = require('./routes/post.routers');
 const uploadRouter = require('./routes/upload.router');
 const cookieParser = require('cookie-parser');
+const { getFileStream } = require('./services/s3');
 require('./services/redis');
 
 const app = express();
@@ -29,13 +30,20 @@ app.use('/api/post', postRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/assets', express.static(path.join(__dirname, 'public/assets')));
 
+app.get('/api/images/:key', (req, res, next) => {
+  const key = req.params.key;
+  const readStream = getFileStream(key);
+
+  readStream.pipe(res);
+});
+
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 //Custom express error handler
 app.use((error, req, res, next) => {
-  res.status(error.status || 5000);
+  res.status(error.status || 500);
   res.json({
     status: error.status,
     message: error.message,

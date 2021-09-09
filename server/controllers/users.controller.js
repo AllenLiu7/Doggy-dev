@@ -112,7 +112,8 @@ async function httpGetFollowings(req, res, next) {
   try {
     const { followings } = await User.findOne({ _id: req.params.id });
     const followingUsersInfo = await User.find({ _id: { $in: followings } });
-    res.status(200).json(followingUsersInfo);
+    const sortedUsers = followingUsersInfo.slice(0, 9);
+    res.status(200).json(sortedUsers);
   } catch (err) {
     return next(createError(500, err));
   }

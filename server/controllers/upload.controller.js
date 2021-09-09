@@ -1,34 +1,24 @@
-const User = require('../models/users.model');
 const createError = require('http-errors');
-const path = require('path');
-const fs = require('fs');
+const { uploadFile, deleteFile } = require('../services/s3');
 
-//upload post image (/upload/post_image)
+//upload profile pic or post image (/upload/post_image)
 async function httpUploadImage(req, res, next) {
+  const file = req.file;
+  console.log(file);
   const currentProfilePic = req.body.currentProfilePic;
+
+  const result = await uploadFile(file);
+  console.log(result);
 
   //delete current profile pic
   if (currentProfilePic) {
-    const oldPath = path.resolve(
-      '..',
-      'server/public/assets/profile-pictures',
-      currentProfilePic
-    );
-
-    fs.unlink(oldPath, (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      console.log('oldPic deleted');
-    });
+    deleteFile(currentProfilePic);
   } //server\public\assets\profile-pictures\1.jpg
 
   try {
     return res.status(200).json({
       message: 'File uploded successfully',
-      fileName: req.file.filename, //return the file name to frontend for handling
+      key: result.key, //return the S3 file key to frontend for handling
     });
   } catch (err) {
     next(createError(500, err));
