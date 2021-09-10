@@ -6,8 +6,9 @@ const userRouter = require('./routes/user.routers');
 const authRouter = require('./routes/auth.routers');
 const postRouter = require('./routes/post.routers');
 const uploadRouter = require('./routes/upload.router');
+const imageRouter = require('./routes/image.routers');
 const cookieParser = require('cookie-parser');
-const { getFileStream } = require('./services/s3');
+const setCache = require('./utils/setCache');
 require('./services/redis');
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(setCache);
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/user', userRouter);
@@ -29,14 +31,9 @@ app.use('/api/auth', authRouter);
 app.use('/api/post', postRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/api/images', imageRouter);
 
-app.get('/api/images/:key', (req, res, next) => {
-  const key = req.params.key;
-  const readStream = getFileStream(key);
-
-  readStream.pipe(res);
-});
-
+//fallback for SPA
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
