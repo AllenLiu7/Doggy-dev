@@ -28,7 +28,8 @@ export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { control, handleSubmit } = useForm();
-  const { isSuccess, isError, errorMessage } = useSelector(currentUserSelector);
+  const { isSuccess, isError, errorMessage, token } =
+    useSelector(currentUserSelector);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -61,7 +62,7 @@ export default function Login() {
     //get AT after login
     //for auth psistance(page refresh or tab close) using refresh token, and refresh both RT and AT
     verifyUser();
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, token]);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
