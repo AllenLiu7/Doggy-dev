@@ -184,12 +184,7 @@ export default function Login() {
           </Box>
           <Box mt={2}>
             <Link to='/signup'>
-              <Button
-                type='submit'
-                fullWidth
-                variant='contained'
-                color='secondary'
-              >
+              <Button fullWidth variant='contained' color='secondary'>
                 Sign Up
               </Button>
             </Link>
