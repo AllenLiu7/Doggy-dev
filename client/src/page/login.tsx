@@ -19,7 +19,6 @@ import {
   clearState,
   currentUserSelector,
   loginUserThunk,
-  setIntervalId,
   updateToken,
 } from '../redux/slice/loginUser';
 import { refreshTokenReq } from '../service/api/auth';

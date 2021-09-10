@@ -27,13 +27,13 @@ export default function SignUp() {
   const history = useHistory();
   const { control, handleSubmit, watch, setError } = useForm();
   const watchFields = watch(['password']);
-  const { isSuccess, isError, errorMessage, currentUser } =
+  const { isSuccess, isError, errorMessage, currentUser, token } =
     useSelector(currentUserSelector);
 
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    if (currentUser) {
+    if (token) {
       history.push('/app');
     }
 
@@ -70,7 +70,6 @@ export default function SignUp() {
       });
     }
     if (!userCheck && !emailCheck) {
-      console.log(data);
       dispatch(signUpUser(data));
     }
   };
