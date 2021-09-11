@@ -23,14 +23,17 @@ app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
-app.use(setCache);
+//app.use(setCache);
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/post', postRouter);
 app.use('/api/upload', uploadRouter);
-app.use('/api/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use(
+  '/api/assets',
+  express.static(path.join(__dirname, 'public/assets'), { maxAge: 3600000 })
+);
 app.use('/api/images', imageRouter);
 
 //fallback for SPA
