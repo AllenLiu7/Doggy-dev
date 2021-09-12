@@ -191,6 +191,11 @@ export default function Login() {
             <GoogleButton />
           </Box>
         </form>
+        <p>
+          Test account: kobe@test.com <br />
+          Password: 123123 <br />
+          Or sign up a new account
+        </p>
       </Box>
     </Box>
   );
