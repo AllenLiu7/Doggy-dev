@@ -68,7 +68,10 @@ export default function TopBar() {
         <TopBarRight>
           <TopBarIcon />
           <Link to={`/app/profile/${currentUser._id}`}>
-            <StyledProfilePic src={currentUser.profilePicture} />
+            <StyledProfilePic
+              src={currentUser.profilePicture}
+              userId={currentUser._id}
+            />
           </Link>
           <LogoutDiv onClick={handleLogout}>Log out</LogoutDiv>
         </TopBarRight>

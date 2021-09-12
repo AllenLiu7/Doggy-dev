@@ -38,7 +38,7 @@ export default function ShareCard() {
 
       try {
         const response = await uploadPostImageReq(data);
-        newPost.img = response.data.fileName; //server returns the modified file name
+        newPost.img = response.data.key; //server returns the modified file name
       } catch (err) {
         console.log(err);
       }
@@ -58,6 +58,7 @@ export default function ShareCard() {
           height='45px'
           width='45px'
           src={currentUser.profilePicture}
+          userId={currentUser._id}
         />
         <InputWrapper>
           <Input placeholder='What is in your mind?' ref={desc} />

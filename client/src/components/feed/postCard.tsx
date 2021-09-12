@@ -19,7 +19,7 @@ export default function PostCard({ post }) {
   const date = new Date(createdAt).toDateString();
 
   const {
-    user: { profilePicture, username },
+    user: { profilePicture, username, _id },
   } = useUserInfo(userId); //fetch post creator info
 
   const [isLiked, setIsLiked] = useState(likes.includes(currentUserId));
@@ -49,7 +49,7 @@ export default function PostCard({ post }) {
       <Container>
         <PostHeader>
           <ProfileWrap>
-            <ProfileHead src={profilePicture} name={username} />
+            <ProfileHead src={profilePicture} name={username} id={_id} />
             <TimeStamp date={date} />
           </ProfileWrap>
           <PostMenu isOwner={isOwner} postId={postId} />
@@ -58,9 +58,7 @@ export default function PostCard({ post }) {
         <PostContent>
           <DescWrap>{desc}</DescWrap>
           <ImgWrapper>
-            {img ? (
-              <StyledImg src={process.env.PUBLIC_FOLDER + '/post/' + img} />
-            ) : null}
+            {img ? <StyledImg src={`${process.env.S3_IMAGES}${img}`} /> : null}
           </ImgWrapper>
 
           <PostBottomWrap>

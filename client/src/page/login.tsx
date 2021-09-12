@@ -19,7 +19,6 @@ import {
   clearState,
   currentUserSelector,
   loginUserThunk,
-  setIntervalId,
   updateToken,
 } from '../redux/slice/loginUser';
 import { refreshTokenReq } from '../service/api/auth';
@@ -29,7 +28,8 @@ export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { control, handleSubmit } = useForm();
-  const { isSuccess, isError, errorMessage } = useSelector(currentUserSelector);
+  const { isSuccess, isError, errorMessage, token } =
+    useSelector(currentUserSelector);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -62,7 +62,7 @@ export default function Login() {
     //get AT after login
     //for auth psistance(page refresh or tab close) using refresh token, and refresh both RT and AT
     verifyUser();
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, token]);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -184,12 +184,7 @@ export default function Login() {
           </Box>
           <Box mt={2}>
             <Link to='/signup'>
-              <Button
-                type='submit'
-                fullWidth
-                variant='contained'
-                color='secondary'
-              >
+              <Button fullWidth variant='contained' color='secondary'>
                 Sign Up
               </Button>
             </Link>

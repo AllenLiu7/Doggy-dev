@@ -18,14 +18,19 @@ import { currentUserSelector, updateUser } from '../../redux/slice/loginUser';
 import { uploadProfilePicReq } from '../../service/api/upload';
 import { editProfileReq } from '../../service/api/user';
 import { Card } from '../common/styled-components/card';
-const PF = process.env.PROFILE_PIC;
+const IMAGE = process.env.S3_IMAGES;
 
 export default function EditBar() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(currentUserSelector);
-  const { username, email, city, profilePicture } = currentUser;
+  const { username, email, city, profilePicture, _id } = currentUser;
   const { control, handleSubmit, register } = useForm();
-  const [file, setFile] = useState(PF + profilePicture);
+
+  const [file, setFile] = useState(
+    profilePicture
+      ? IMAGE + profilePicture
+      : `https://avatars.dicebear.com/api/bottts/${_id}.svg`
+  );
   const image = register('image'); // for react hook form overide bug
 
   const handleProfilePicChange = (event) => {
@@ -40,7 +45,7 @@ export default function EditBar() {
         ...data,
       },
     };
-    console.log(currentUser.profilePicture);
+
     //create formData to include the file and the current profile pic filename
     if (file) {
       const formData = new FormData();
@@ -48,7 +53,7 @@ export default function EditBar() {
       formData.append('currentProfilePic', currentUser.profilePicture);
       try {
         const response = await uploadProfilePicReq(formData);
-        newData.profile.profilePicture = response.data.fileName;
+        newData.profile.profilePicture = response.data.key;
       } catch (err) {
         console.log(err);
       }

@@ -6,13 +6,13 @@ const PF = process.env.PUBLIC_FOLDER;
 
 export default function ProfileBanner({ user }) {
   //console.log(currentUser);
-  const { username, profilePicture } = user;
+  const { username, profilePicture, _id } = user;
   console.log(profilePicture);
 
   return (
     <Container>
       <BannerBackground />
-      <CusStyledProfilePic src={profilePicture} />
+      <CusStyledProfilePic src={profilePicture} userId={_id} />
       <NameWrap>
         <Name>{username}</Name>
         <Greeting>I feel so happy right now! Let's eat!</Greeting>

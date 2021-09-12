@@ -7,11 +7,11 @@ interface Props {
   src: string;
 }
 
-export default function ProfilePicName({ name, src }: Props) {
+export default function ProfilePicName({ name, src, id }: Props) {
   return (
     <>
       <ProfileWrapper>
-        <StyledProfilePic src={src} />
+        <StyledProfilePic src={src} userId={id} />
         <NameWrapper>{name}</NameWrapper>
       </ProfileWrapper>
     </>
