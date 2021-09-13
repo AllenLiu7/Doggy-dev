@@ -7,13 +7,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { deletePost } from '../../redux/slice/getTimelinePosts';
 
-export default function PostMenu({ isOwner, postId }) {
+export default React.memo(function PostMenu({ isOwner, postId }) {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false); //delete dialog
@@ -106,7 +106,7 @@ export default function PostMenu({ isOwner, postId }) {
       )}
     </Container>
   );
-}
+});
 
 const Container = styled.div`
   margin-right: 20px;

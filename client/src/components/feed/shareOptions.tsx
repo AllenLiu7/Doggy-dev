@@ -6,9 +6,10 @@ import {
   LocationOn,
   PhotoCamera,
 } from '@material-ui/icons';
+import React from 'react';
 import styled from 'styled-components';
 
-export default function ShareOptions({ isAttatch, handleChange }) {
+export default React.memo(function ShareOptions({ isAttatch, handleChange }) {
   return (
     <>
       <Container>
@@ -42,7 +43,7 @@ export default function ShareOptions({ isAttatch, handleChange }) {
       </Container>
     </>
   );
-}
+});
 
 const Container = styled.div`
   display: flex;

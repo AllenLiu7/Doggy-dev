@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -19,9 +19,9 @@ export default function ShareCard() {
 
   const [isAttatch, setIsAttatch] = useState(false);
 
-  const handleUploadChange = () => {
+  const handleUploadChange = useCallback(() => {
     setIsAttatch(true);
-  };
+  }, [setIsAttatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

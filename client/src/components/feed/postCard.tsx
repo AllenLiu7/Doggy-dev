@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import TimeAgo from 'react-timeago';
 import styled from 'styled-components';
@@ -11,12 +11,12 @@ import ProfileHead from '../common/profilePicName';
 import PostCardComment from './postCardComment';
 import PostCardLike from './postCardLike';
 
-export default function PostCard({ post }) {
+function PostCard({ post }) {
   const {
     currentUser: { _id: currentUserId },
   } = useSelector(currentUserSelector);
   const { userId, img, desc, likes, _id: postId, createdAt } = post;
-  const date = new Date(createdAt).toDateString();
+  const date = useMemo(() => new Date(createdAt).toDateString(), [createdAt]);
 
   const {
     user: { profilePicture, username, _id },
@@ -30,7 +30,7 @@ export default function PostCard({ post }) {
     if (currentUserId === userId) return setIsOwner(true);
   }, [currentUserId, userId]);
 
-  const handleLikeClick = () => {
+  const handleLikeClick = useCallback(() => {
     const updateLike = async (postId: string, currentUserId: string) => {
       try {
         await updateLikeReq(postId, currentUserId);
@@ -42,7 +42,7 @@ export default function PostCard({ post }) {
     setIsLiked(!isLiked);
     setLike(isLiked ? like - 1 : like + 1);
     updateLike(postId, currentUserId);
-  };
+  }, [postId, currentUserId, isLiked, like]);
 
   return (
     <>
@@ -70,6 +70,8 @@ export default function PostCard({ post }) {
     </>
   );
 }
+
+export default React.memo(PostCard);
 
 const Container = styled.div`
   display: flex;

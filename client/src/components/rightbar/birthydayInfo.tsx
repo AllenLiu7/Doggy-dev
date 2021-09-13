@@ -1,8 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const PF = process.env.PUBLIC_FOLDER;
 
-export default function BirthydayInfo({ bDayFriend, numBDay }) {
+export default React.memo(function BirthydayInfo({ bDayFriend, numBDay }) {
   return (
     <Container>
       <GiftImage />
@@ -12,7 +13,7 @@ export default function BirthydayInfo({ bDayFriend, numBDay }) {
       </div>
     </Container>
   );
-}
+});
 
 const Container = styled.div`
   display: flex;

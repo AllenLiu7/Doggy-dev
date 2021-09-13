@@ -1,5 +1,5 @@
 import CloseIcon from '@material-ui/icons/Close';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { StyledHr } from '../common/styled-components/hr';
@@ -7,7 +7,7 @@ import BirthydayInfo from './birthydayInfo';
 
 const PF = process.env.PUBLIC_FOLDER;
 
-export default function BirthdayCard() {
+export default React.memo(function BirthdayCard() {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(true);
@@ -25,7 +25,7 @@ export default function BirthdayCard() {
       <StyledHr />
     </Container>
   );
-}
+});
 
 const Container = styled.div`
   position: relative;

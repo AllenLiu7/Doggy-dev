@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { StyledProfilePic } from './styled-components/styledProfilePic';
@@ -7,7 +8,7 @@ interface Props {
   src: string;
 }
 
-export default function ProfilePicName({ name, src, id }: Props) {
+export default React.memo(function ProfilePicName({ name, src, id }: Props) {
   return (
     <>
       <ProfileWrapper>
@@ -16,7 +17,7 @@ export default function ProfilePicName({ name, src, id }: Props) {
       </ProfileWrapper>
     </>
   );
-}
+});
 
 const ProfileWrapper = styled.div`
   display: flex;
