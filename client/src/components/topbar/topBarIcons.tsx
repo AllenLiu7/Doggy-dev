@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import React from 'react';
+import styled from 'styled-components';
 
 type Props = {
   friendReq?: number;
@@ -9,11 +10,7 @@ type Props = {
   notices?: number;
 };
 
-export default function TopBarIcon({
-  friendReq = 1,
-  messages = 10,
-  notices = 2,
-}: Props) {
+function TopBarIcon({ friendReq = 1, messages = 10, notices = 2 }: Props) {
   return (
     <>
       <Container>
@@ -33,6 +30,8 @@ export default function TopBarIcon({
     </>
   );
 }
+
+export default React.memo(TopBarIcon);
 
 const Container = styled.div`
   display: flex;

@@ -5,9 +5,7 @@ import { StyledProfilePic } from '../common/styled-components/styledProfilePic';
 const PF = process.env.PUBLIC_FOLDER;
 
 export default function ProfileBanner({ user }) {
-  //console.log(currentUser);
   const { username, profilePicture, _id } = user;
-  console.log(profilePicture);
 
   return (
     <Container>

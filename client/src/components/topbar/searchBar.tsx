@@ -1,8 +1,10 @@
-import styled from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
+import React from 'react';
+import styled from 'styled-components';
+
 import { Input } from '../common/styled-components/input';
 
-export default function SearchBar() {
+function SearchBar() {
   return (
     <>
       <Container>
@@ -12,6 +14,8 @@ export default function SearchBar() {
     </>
   );
 }
+
+export default React.memo(SearchBar);
 
 const Container = styled.div`
   display: flex;

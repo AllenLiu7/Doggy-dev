@@ -25,7 +25,6 @@ export default function TopBar() {
     //setting up silence refresh
     const timer = setInterval(async () => {
       try {
-        console.log('interval verifyUser runs');
         const response = await refreshTokenReq();
         const newToken = response.data.token;
         if (newToken) {
@@ -37,7 +36,7 @@ export default function TopBar() {
       } catch (err) {
         console.log(err);
       }
-    }, 15 * 1000 - 500);
+    }, 90 * 1000 - 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -62,7 +61,7 @@ export default function TopBar() {
         </TopBarLeft>
 
         <TopBarCenter>
-          <TopBarLink />
+          <TopBarLink id={currentUser._id} />
         </TopBarCenter>
 
         <TopBarRight>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { StyledHr } from '../common/styled-components/hr';
@@ -6,7 +6,7 @@ import { StyledButton } from '../common/styled-components/styledButton';
 import SideBarFriendList from './sideBarFriendList';
 import SideBarLinkList from './sideBarLinkList';
 
-export default function SideBar() {
+function SideBar() {
   const [show, setShow] = useState(true);
   const handdleShowMore = () => {
     setShow(!show);
@@ -25,6 +25,8 @@ export default function SideBar() {
     </>
   );
 }
+
+export default React.memo(SideBar);
 
 const SideBarContainer = styled.div`
   flex: 3;

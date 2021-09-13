@@ -1,22 +1,17 @@
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { currentUserSelector } from '../../redux/slice/loginUser';
-
-export default function TopBarLink() {
-  const { currentUser } = useSelector(currentUserSelector);
-  const userId = currentUser._id;
-
+function TopBarLink({ id }) {
   return (
     <>
       <StyledLink to='/app'>
         <HomeIcon />
       </StyledLink>
-      <StyledLink to={`/app/profile/${userId}`}>
+      <StyledLink to={`/app/profile/${id}`}>
         <PeopleAltOutlinedIcon />
       </StyledLink>
       <StyledLink to='/'>
@@ -25,6 +20,8 @@ export default function TopBarLink() {
     </>
   );
 }
+
+export default React.memo(TopBarLink);
 
 const StyledLink = styled(Link)`
   display: flex;
