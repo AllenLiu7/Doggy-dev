@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,7 +9,7 @@ interface Props {
   src: string;
 }
 
-export default function ProfilePicNameBig({ user }: Props) {
+function ProfilePicNameBig({ user }: Props) {
   const { username, profilePicture, _id: userId } = user;
   return (
     <>
@@ -27,6 +28,8 @@ export default function ProfilePicNameBig({ user }: Props) {
     </>
   );
 }
+
+export default React.memo(ProfilePicNameBig);
 
 const ProfileWrapper = styled.div`
   display: flex;

@@ -1,8 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { Card } from '../common/styled-components/card';
 
-export default function UserBioCard() {
+function UserBioCard() {
   return (
     <CustomCard>
       <Title>User Bio</Title>
@@ -23,6 +24,8 @@ export default function UserBioCard() {
     </CustomCard>
   );
 }
+
+export default React.memo(UserBioCard);
 
 const CustomCard = styled(Card)`
   margin: 7px 0 40px 0;
