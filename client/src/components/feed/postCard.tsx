@@ -16,7 +16,7 @@ function PostCard({ post }) {
     currentUser: { _id: currentUserId },
   } = useSelector(currentUserSelector);
   const { userId, img, desc, likes, _id: postId, createdAt } = post;
-  const date = useMemo(() => new Date(createdAt).toDateString(), [createdAt]);
+  const date = useMemo(() => new Date(createdAt).toString(), [createdAt]);
 
   const {
     user: { profilePicture, username, _id },
@@ -50,7 +50,7 @@ function PostCard({ post }) {
         <PostHeader>
           <ProfileWrap>
             <ProfileHead src={profilePicture} name={username} id={_id} />
-            <TimeStamp date={date} />
+            <TimeStamp date={date} minPeriod={30} />
           </ProfileWrap>
           <PostMenu isOwner={isOwner} postId={postId} />
         </PostHeader>
