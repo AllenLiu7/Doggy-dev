@@ -10,9 +10,28 @@ module.exports = (setting) => {
     output: {
       path: path.resolve(__dirname, 'build'),
       publicPath: '/', //solve the url refresh problem
-      filename: 'bundle.js',
+      //filename: 'bundle.js',
     },
     mode: 'development',
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendor', //just specify the name of the chunk file
+            chunks: 'all',
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'async',
+            priority: 10,
+            reuseExistingChunk: true,
+            enforce: true,
+          },
+        },
+      },
+    },
     module: {
       rules: [
         {
