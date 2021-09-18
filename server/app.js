@@ -8,8 +8,7 @@ const postRouter = require('./routes/post.routers');
 const uploadRouter = require('./routes/upload.router');
 const imageRouter = require('./routes/image.routers');
 const cookieParser = require('cookie-parser');
-const setCache = require('./utils/setCache');
-require('./services/redis');
+const compression = require('compression');
 
 const app = express();
 
@@ -19,11 +18,11 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
+app.use(compression());
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
-//app.use(setCache);
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/user', userRouter);
@@ -42,7 +41,7 @@ app.get('/*', (req, res) => {
 });
 
 //Custom express error handler
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   res.status(error.status || 500);
   res.json({
     status: error.status,
