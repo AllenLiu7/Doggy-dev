@@ -54,8 +54,8 @@ export default function SignUp() {
 
   const onSubmit = async (data) => {
     const { username, email } = data;
-    const { data: userCheck } = await checkUserEmailReq({ username });
-    const { data: emailCheck } = await checkUsernameReq({ email });
+    const { data: emailCheck } = await checkUserEmailReq({ email });
+    const { data: userCheck } = await checkUsernameReq({ username });
 
     if (userCheck) {
       setError('username', {
