@@ -4,13 +4,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = (setting) => {
-  console.log(setting);
   return {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
-      path: path.resolve(__dirname, 'build'),
+      path: path.resolve('..', 'server', 'build'),
       publicPath: '/', //solve the url refresh problem
-      //filename: 'bundle.js',
+      chunkFilename: '[name].[contenthash].js',
+      filename: '[name].[contenthash].js',
     },
     mode: 'development',
     optimization: {
@@ -22,7 +22,7 @@ module.exports = (setting) => {
             chunks: 'all',
           },
           common: {
-            name: 'common',
+            name: 'common', //module that used by more than two chunks will put here and load with main
             minChunks: 2,
             chunks: 'async',
             priority: 10,
@@ -83,7 +83,7 @@ module.exports = (setting) => {
       port: 3000,
       // hot: false,
       compress: true,
-      open: true,
+      open: 'chrome',
       historyApiFallback: true, //tell Webpack and its configuration that it should fallback for every path to your entry point
     },
   };
