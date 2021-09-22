@@ -12,16 +12,14 @@ const compression = require('compression');
 
 const app = express();
 
-// const corsOptions = {
-//   origin: 'http://localhost:3000',
-//   credentials: true,
-//   optionSuccessStatus: 200,
-// };
-
-console.log(process.env);
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
 app.use(compression());
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());

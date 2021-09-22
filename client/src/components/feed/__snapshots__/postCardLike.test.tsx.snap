@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostCardLike component renders 1`] = `
+<styled.div>
+  <styled.img
+    onClick={[Function]}
+  />
+  <styled.img />
+  <styled.div>
+    1 people likes it
+  </styled.div>
+</styled.div>
+`;

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const PF = process.env.PUBLIC_FOLDER;
 
 interface Props {
-  likes?: [];
+  like: number;
+  handleLikeClick: () => void;
 }
 
 export default function PostCardLike({ like, handleLikeClick }: Props) {
