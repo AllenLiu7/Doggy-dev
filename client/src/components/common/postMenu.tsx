@@ -13,7 +13,12 @@ import styled from 'styled-components';
 
 import { deletePost } from '../../redux/slice/getTimelinePosts';
 
-export default React.memo(function PostMenu({ isOwner, postId }) {
+interface Props {
+  isOwner: boolean;
+  postId: string;
+}
+
+export default React.memo(function PostMenu({ isOwner, postId }: Props) {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false); //delete dialog

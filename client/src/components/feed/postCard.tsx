@@ -1,3 +1,4 @@
+import CircularProgress from '@material-ui/core/CircularProgress';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import TimeAgo from 'react-timeago';
@@ -6,21 +7,21 @@ import styled from 'styled-components';
 import { useUserInfo } from '../../Hook/useUserInfo';
 import { currentUserSelector } from '../../redux/slice/loginUser';
 import { updateLikeReq } from '../../service/api/post';
+import { Post } from '../../types/common';
 import PostMenu from '../common/postMenu';
 import ProfileHead from '../common/profilePicName';
 import PostCardComment from './postCardComment';
 import PostCardLike from './postCardLike';
 
-function PostCard({ post }) {
+function PostCard({ post }: { post: Post }) {
   const {
     currentUser: { _id: currentUserId },
   } = useSelector(currentUserSelector);
   const { userId, img, desc, likes, _id: postId, createdAt } = post;
+
   const date = useMemo(() => new Date(createdAt).toString(), [createdAt]);
 
-  const {
-    user: { profilePicture, username, _id },
-  } = useUserInfo(userId); //fetch post creator info
+  const { user } = useUserInfo(userId); //fetch post creator info
 
   const [isLiked, setIsLiked] = useState(likes.includes(currentUserId));
   const [like, setLike] = useState(likes.length);
@@ -44,12 +45,18 @@ function PostCard({ post }) {
     updateLike(postId, currentUserId);
   }, [postId, currentUserId, isLiked, like]);
 
+  if (!user) return <CircularProgress />;
+
   return (
     <>
       <Container>
         <PostHeader>
           <ProfileWrap>
-            <ProfileHead src={profilePicture} name={username} id={_id} />
+            <ProfileHead
+              src={user.profilePicture}
+              name={user.username}
+              id={user._id}
+            />
             <TimeStamp date={date} minPeriod={30} />
           </ProfileWrap>
           <PostMenu isOwner={isOwner} postId={postId} />
@@ -115,7 +122,7 @@ const ProfileWrap = styled.div`
   margin: 20px 20px 20px 20px;
 `;
 
-const TimeStamp = styled(TimeAgo)`
+const TimeStamp = styled(TimeAgo)<{ date: string; minPeriod: number }>`
   margin-left: 8px;
   font-size: 12px;
 `;

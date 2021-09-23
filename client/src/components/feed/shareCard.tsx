@@ -72,7 +72,7 @@ export default function ShareCard() {
       >
         <DownWrapper>
           <ShareOptions
-            isAttatch={isAttatch}
+            isAttach={isAttatch}
             handleChange={handleUploadChange}
           />
           <StyledButton bgColor='green' margin='0 50px' type='submit'>

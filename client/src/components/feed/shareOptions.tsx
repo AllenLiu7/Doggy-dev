@@ -9,7 +9,12 @@ import {
 import React from 'react';
 import styled from 'styled-components';
 
-export default React.memo(function ShareOptions({ isAttatch, handleChange }) {
+interface Props {
+  isAttach: boolean;
+  handleChange(event: React.SyntheticEvent<HTMLInputElement>): void;
+}
+
+function ShareOptions({ isAttach, handleChange }: Props) {
   return (
     <>
       <Container>
@@ -17,7 +22,7 @@ export default React.memo(function ShareOptions({ isAttatch, handleChange }) {
           <InputLabel>
             <PhotoCamera style={{ color: red[500] }} />
             <InputSpan>Photo or Video</InputSpan>
-            {isAttatch && <AttachFile />}
+            {isAttach && <AttachFile />}
 
             <input
               name='image'
@@ -43,7 +48,9 @@ export default React.memo(function ShareOptions({ isAttatch, handleChange }) {
       </Container>
     </>
   );
-});
+}
+
+export default React.memo(ShareOptions);
 
 const Container = styled.div`
   display: flex;

@@ -25,7 +25,7 @@ export default function Feed({ posts, isCurrentUser, isHome }: Props) {
   );
 }
 
-const FeedContainer = styled.div`
+const FeedContainer = styled.div<{ isHome: boolean | undefined }>`
   display: flex;
   margin-top: ${(props) => (props.isHome ? '40px' : null)};
   flex-direction: column;

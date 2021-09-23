@@ -6,6 +6,7 @@ import { StyledProfilePic } from './styled-components/styledProfilePic';
 interface Props {
   name: string;
   src: string;
+  id: string;
 }
 
 export default React.memo(function ProfilePicName({ name, src, id }: Props) {
