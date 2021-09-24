@@ -23,3 +23,18 @@ export interface User {
   _v: number;
   _id: string;
 }
+
+export interface EditFormData {
+  city: string;
+  email: string;
+  from: string;
+  image: FileList;
+  relation: number;
+  username: string;
+  profilePicture: string;
+}
+
+export interface EditProfileReqData {
+  id: string;
+  profile: EditFormData;
+}

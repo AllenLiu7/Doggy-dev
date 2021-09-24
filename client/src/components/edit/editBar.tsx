@@ -8,7 +8,6 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import axios from 'axios';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +16,7 @@ import styled from 'styled-components';
 import { currentUserSelector, updateUser } from '../../redux/slice/loginUser';
 import { uploadProfilePicReq } from '../../service/api/upload';
 import { editProfileReq } from '../../service/api/user';
+import { EditFormData } from '../../types/common';
 import { Card } from '../common/styled-components/card';
 const IMAGE = process.env.S3_IMAGES;
 
@@ -33,11 +33,14 @@ export default function EditBar() {
   );
   const image = register('image'); // for react hook form overide bug
 
-  const handleProfilePicChange = (event) => {
-    setFile(URL.createObjectURL(event.target.files[0]));
+  const handleProfilePicChange = (
+    event: React.ChangeEvent<HTMLInputElement> | null
+  ) => {
+    setFile(URL.createObjectURL(event?.target.files[0]));
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: EditFormData) => {
+    console.log(data);
     const file = data.image[0];
     const newData = {
       id: currentUser._id,

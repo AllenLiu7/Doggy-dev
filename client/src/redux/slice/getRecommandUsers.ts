@@ -1,9 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { getRecommandUsersReq } from '../../service/api/user';
+import { User } from '../../types/common';
+import { RootState } from '../store';
 import { follow } from './loginUser';
 
-export const initialState = {
+interface StateType {
+  loading: boolean;
+  hasErrors: boolean;
+  recommandUsers: User[];
+}
+
+const initialState: StateType = {
   loading: false,
   hasErrors: false,
   recommandUsers: [],
@@ -52,5 +60,5 @@ const { reducer } = createSlice({
 export default reducer;
 
 //selectors
-export const recommandUsersSelector = (state) =>
+export const recommandUsersSelector = (state: RootState) =>
   state.recommandUsers.recommandUsers;
