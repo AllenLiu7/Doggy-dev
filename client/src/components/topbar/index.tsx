@@ -36,7 +36,7 @@ export default function TopBar() {
       } catch (err) {
         console.log(err);
       }
-    }, 90 * 1000 - 1000);
+    }, 29 * 1000);
 
     return () => clearTimeout(timer);
   }, []);
