@@ -7,7 +7,7 @@ import SideBarFriendList from './sideBarFriendList';
 import SideBarLinkList from './sideBarLinkList';
 
 function SideBar() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const handdleShowMore = () => {
     setShow(!show);
   };

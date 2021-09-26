@@ -27,7 +27,7 @@ const LinkWrapper = styled.div<LinkWrapperProps>`
   display: flex;
   align-items: center;
   cursor: pointer;
-  display: ${(props) => (props.show ? 'none' : 'block')};
+  display: ${(props) => (props.show ? 'block' : 'none')};
   transition: all 2s;
 `;
 

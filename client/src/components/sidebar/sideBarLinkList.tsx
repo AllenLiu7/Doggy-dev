@@ -15,15 +15,15 @@ import SideBarLink from './sideBarLink';
 export default function SideBarLinkList({ show }: { show: boolean }) {
   return (
     <>
-      <SideBarLink render={() => <RssFeedIcon />} linkName='Feed' />
-      <SideBarLink render={() => <ChatIcon />} linkName='Chats' />
-      <SideBarLink render={() => <VideoLibraryIcon />} linkName='Videos' />
-      <SideBarLink render={() => <PeopleIcon />} linkName='Groups' />
-      <SideBarLink render={() => <BookmarkIcon />} linkName='Bookmarks' />
-      <SideBarLink render={() => <HelpIcon />} linkName='Questions' />
-      <SideBarLink render={() => <WorkIcon />} linkName='Jobs' />
-      <SideBarLink render={() => <EventIcon />} linkName='Events' />
-      <SideBarLink render={() => <MenuBookIcon />} linkName='Courses' />
+      <SideBarLink show render={() => <RssFeedIcon />} linkName='Feed' />
+      <SideBarLink show render={() => <ChatIcon />} linkName='Chats' />
+      <SideBarLink show render={() => <VideoLibraryIcon />} linkName='Videos' />
+      <SideBarLink show render={() => <PeopleIcon />} linkName='Groups' />
+      <SideBarLink show render={() => <BookmarkIcon />} linkName='Bookmarks' />
+      <SideBarLink show render={() => <HelpIcon />} linkName='Questions' />
+      <SideBarLink show render={() => <WorkIcon />} linkName='Jobs' />
+      <SideBarLink show render={() => <EventIcon />} linkName='Events' />
+      <SideBarLink show render={() => <MenuBookIcon />} linkName='Courses' />
       <SideBarLink
         show={show}
         render={() => <WbSunnyIcon />}
