@@ -19,7 +19,7 @@ import {
   clearState,
   currentUserSelector,
   signUpUser,
-} from '../redux/slice/loginUser';
+} from '../redux/slice/user';
 import { checkUserEmailReq, checkUsernameReq } from '../service/api/auth';
 
 export default function SignUp() {

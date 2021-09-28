@@ -5,7 +5,7 @@ import TimeAgo from 'react-timeago';
 import styled from 'styled-components';
 
 import { useUserInfo } from '../../Hook/useUserInfo';
-import { currentUserSelector } from '../../redux/slice/loginUser';
+import { currentUserSelector } from '../../redux/slice/user';
 import { updateLikeReq } from '../../service/api/post';
 import { Post } from '../../types/common';
 import PostMenu from '../common/postMenu';

@@ -7,7 +7,7 @@ import {
   currentUserSelector,
   logoutUser,
   updateToken,
-} from '../../redux/slice/loginUser';
+} from '../../redux/slice/user';
 import { logOutReq, refreshTokenReq } from '../../service/api/auth';
 import { axiosJWT } from '../../service/api/index';
 import { StyledProfilePic } from '../common/styled-components/styledProfilePic';

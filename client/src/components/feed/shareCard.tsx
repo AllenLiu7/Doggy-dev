@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
 import { fetchTimelinePosts } from '../../redux/slice/getTimelinePosts';
-import { currentUserSelector } from '../../redux/slice/loginUser';
+import { currentUserSelector } from '../../redux/slice/user';
 import { newPostReq } from '../../service/api/post';
 import { uploadPostImageReq } from '../../service/api/upload';
 import { StyledHr } from '../common/styled-components/hr';

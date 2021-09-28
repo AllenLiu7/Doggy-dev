@@ -7,11 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
 import { useDefineUser } from '../../Hook/useDefineUser';
 import { fetchFollowingUsers } from '../../redux/slice/getFollowingUsers';
 import { fetchTimelinePosts } from '../../redux/slice/getTimelinePosts';
-import {
-  currentUserSelector,
-  follow,
-  unfollow,
-} from '../../redux/slice/loginUser';
+import { currentUserSelector, follow, unfollow } from '../../redux/slice/user';
 import { _followUser, _unfollowUser } from '../../service/api/user';
 import { StyledButton } from '../common/styled-components/styledButton';
 import RightBarFriendListCard from '../profile/rightBarFriendListCard';

@@ -12,7 +12,7 @@ import {
   fetchTimelinePosts,
   timelinePostsSelector,
 } from '../redux/slice/getTimelinePosts';
-import { currentUserSelector } from '../redux/slice/loginUser';
+import { currentUserSelector } from '../redux/slice/user';
 
 export default function Home() {
   const dispatch = useAppDispatch();

@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import followingUsersReducer from './slice/getFollowingUsers';
 import recommandUsersReducer from './slice/getRecommandUsers';
 import timelinePostsReducer from './slice/getTimelinePosts';
-import loginUserReducer from './slice/loginUser';
+import userReducer from './slice/user';
 
 const persistConfig = {
   key: 'root',
@@ -20,7 +20,7 @@ const authPersistConfig = {
 };
 
 const combinedReducer = combineReducers({
-  currentUser: persistReducer(authPersistConfig, loginUserReducer), //nested persist to exclude token
+  currentUser: persistReducer(authPersistConfig, userReducer), //nested persist to exclude token
   followingUsers: followingUsersReducer,
   recommandUsers: recommandUsersReducer,
   timelinePosts: timelinePostsReducer,

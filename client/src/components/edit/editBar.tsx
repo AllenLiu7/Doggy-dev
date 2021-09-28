@@ -13,7 +13,7 @@ import { Controller, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
-import { currentUserSelector, updateUser } from '../../redux/slice/loginUser';
+import { currentUserSelector, updateUser } from '../../redux/slice/user';
 import { uploadProfilePicReq } from '../../service/api/upload';
 import { editProfileReq } from '../../service/api/user';
 import { EditFormData } from '../../types/common';

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useAppSelector } from '../../Hook/typedReduxHook';
 import { useDefineUser } from '../../Hook/useDefineUser';
 import { timelinePostsSelector } from '../../redux/slice/getTimelinePosts';
-import { currentUserSelector } from '../../redux/slice/loginUser';
+import { currentUserSelector } from '../../redux/slice/user';
 import { getUnfollowedPostsReq } from '../../service/api/post';
 import EditBar from '../edit/editBar';
 import Feed from '../feed';

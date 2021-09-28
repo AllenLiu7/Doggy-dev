@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getRecommandUsersReq } from '../../service/api/user';
 import { User } from '../../types/common';
 import { RootState } from '../store';
-import { follow } from './loginUser';
+import { follow } from './user';
 
 interface StateType {
   loading: boolean;

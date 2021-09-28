@@ -20,7 +20,7 @@ import {
   currentUserSelector,
   loginUserThunk,
   updateToken,
-} from '../redux/slice/loginUser';
+} from '../redux/slice/user';
 import { refreshTokenReq } from '../service/api/auth';
 import { axiosJWT } from '../service/api/index';
 
