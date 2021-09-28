@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
 import { fetchTimelinePosts } from '../../redux/slice/getTimelinePosts';
 import { currentUserSelector } from '../../redux/slice/loginUser';
 import { newPostReq } from '../../service/api/post';
@@ -13,8 +13,8 @@ import { StyledProfilePic } from '../common/styled-components/styledProfilePic';
 import ShareOptions from './shareOptions';
 
 export default function ShareCard() {
-  const { currentUser } = useSelector(currentUserSelector);
-  const dispatch = useDispatch();
+  const { currentUser } = useAppSelector(currentUserSelector);
+  const dispatch = useAppDispatch();
   const desc = useRef(null);
 
   const [isAttatch, setIsAttatch] = useState(false);
@@ -28,7 +28,7 @@ export default function ShareCard() {
     const file = e.target[0].files[0];
     const newPost = {
       userId: currentUser._id,
-      desc: desc.current.value,
+      desc: desc?.current.value,
     };
 
     //upload image to server and get back the file name

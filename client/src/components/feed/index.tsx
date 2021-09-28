@@ -10,8 +10,6 @@ interface Props {
 }
 
 export default function Feed({ posts, isCurrentUser, isHome }: Props) {
-  //const postsLoading = useSelector((state) => state.userPosts.loading);
-
   return (
     <>
       <FeedContainer isHome={isHome}>

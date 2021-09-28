@@ -10,11 +10,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import GoogleButton from '../components/common/googleButton';
+import { useAppDispatch, useAppSelector } from '../Hook/typedReduxHook';
 import {
   clearState,
   currentUserSelector,
@@ -23,12 +23,12 @@ import {
 import { checkUserEmailReq, checkUsernameReq } from '../service/api/auth';
 
 export default function SignUp() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const { control, handleSubmit, watch, setError } = useForm();
   const watchFields = watch(['password']);
-  const { isSuccess, isError, errorMessage, currentUser, token } =
-    useSelector(currentUserSelector);
+  const { isSuccess, isError, errorMessage, token } =
+    useAppSelector(currentUserSelector);
 
   const [showPassword, setShowPassword] = useState(false);
 

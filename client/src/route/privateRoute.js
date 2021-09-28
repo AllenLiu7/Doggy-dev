@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
+import { useAppSelector } from '../Hook/typedReduxHook';
 import { currentUserSelector } from '../redux/slice/loginUser';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { token } = useSelector(currentUserSelector);
+  const { token } = useAppSelector(currentUserSelector);
   return (
     <Route
       {...rest}

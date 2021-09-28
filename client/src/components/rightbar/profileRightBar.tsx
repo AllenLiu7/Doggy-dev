@@ -1,9 +1,9 @@
 import AddIcon from '@material-ui/icons/Add';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
 import { useDefineUser } from '../../Hook/useDefineUser';
 import { fetchFollowingUsers } from '../../redux/slice/getFollowingUsers';
 import { fetchTimelinePosts } from '../../redux/slice/getTimelinePosts';
@@ -19,13 +19,13 @@ import UserBioCard from '../profile/userBioCard';
 import SponsorsCard from './sponsersCard';
 
 interface Props {
-  editHandler: () => void;
-  isEdit: boolean;
+  editHandler?: () => void;
+  isEdit?: boolean;
 }
 
 export default function ProfileRightBar({ editHandler, isEdit }: Props) {
-  const dispatch = useDispatch();
-  const { currentUser } = useSelector(currentUserSelector);
+  const dispatch = useAppDispatch();
+  const { currentUser } = useAppSelector(currentUserSelector);
   const { _id: id } = currentUser;
   const { isCurrentUser, paramId } = useDefineUser(currentUser);
 

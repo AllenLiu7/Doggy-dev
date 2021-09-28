@@ -10,9 +10,9 @@ import {
 } from '@material-ui/core';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
 import { currentUserSelector, updateUser } from '../../redux/slice/loginUser';
 import { uploadProfilePicReq } from '../../service/api/upload';
 import { editProfileReq } from '../../service/api/user';
@@ -21,8 +21,8 @@ import { Card } from '../common/styled-components/card';
 const IMAGE = process.env.S3_IMAGES;
 
 export default function EditBar() {
-  const dispatch = useDispatch();
-  const { currentUser } = useSelector(currentUserSelector);
+  const dispatch = useAppDispatch();
+  const { currentUser } = useAppSelector(currentUserSelector);
   const { username, email, city, profilePicture, _id } = currentUser;
   const { control, handleSubmit, register } = useForm();
 

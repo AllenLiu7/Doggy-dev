@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import Feed from '../components/feed';
 import RightBar from '../components/rightbar';
 import SideBar from '../components/sidebar';
 import TopBar from '../components/topbar';
+import { useAppDispatch, useAppSelector } from '../Hook/typedReduxHook';
 import { fetchFollowingUsers } from '../redux/slice/getFollowingUsers';
 import { fetchRecommandUsers } from '../redux/slice/getRecommandUsers';
 import {
@@ -15,9 +15,9 @@ import {
 import { currentUserSelector } from '../redux/slice/loginUser';
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const timelinePosts = useSelector(timelinePostsSelector);
-  const { currentUser } = useSelector(currentUserSelector);
+  const dispatch = useAppDispatch();
+  const timelinePosts = useAppSelector(timelinePostsSelector);
+  const { currentUser } = useAppSelector(currentUserSelector);
 
   useEffect(() => {
     dispatch(fetchFollowingUsers(currentUser._id));

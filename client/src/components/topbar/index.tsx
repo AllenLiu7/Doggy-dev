@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
 import {
   currentUserSelector,
   logoutUser,
@@ -17,9 +17,9 @@ import TopBarLink from './topBarLink';
 import TopBarLogo from './topBarLogo';
 
 export default function TopBar() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
-  const { currentUser } = useSelector(currentUserSelector);
+  const { currentUser } = useAppSelector(currentUserSelector);
 
   useEffect(() => {
     //setting up silence refresh

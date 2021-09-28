@@ -10,11 +10,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import GoogleButton from '../components/common/googleButton';
+import { useAppDispatch, useAppSelector } from '../Hook/typedReduxHook';
 import {
   clearState,
   currentUserSelector,
@@ -25,11 +25,11 @@ import { refreshTokenReq } from '../service/api/auth';
 import { axiosJWT } from '../service/api/index';
 
 export default function Login() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const { control, handleSubmit } = useForm();
   const { isSuccess, isError, errorMessage, token } =
-    useSelector(currentUserSelector);
+    useAppSelector(currentUserSelector);
 
   const [showPassword, setShowPassword] = useState(false);
 

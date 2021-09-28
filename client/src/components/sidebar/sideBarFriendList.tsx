@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { useAppSelector } from '../../Hook/typedReduxHook';
 import { recommandUsersSelector } from '../../redux/slice/getRecommandUsers';
 import { User } from '../../types/common';
 import ProfilePicName from '../common/profilePicName';
 
 export default function SideBarFriendList() {
-  const recommandUsers = useSelector(recommandUsersSelector);
+  const recommandUsers = useAppSelector(recommandUsersSelector);
 
   return (
     <>

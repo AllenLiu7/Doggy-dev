@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { useAppSelector } from '../../Hook/typedReduxHook';
 import { useDefineUser } from '../../Hook/useDefineUser';
 import { timelinePostsSelector } from '../../redux/slice/getTimelinePosts';
 import { currentUserSelector } from '../../redux/slice/loginUser';
@@ -15,9 +15,9 @@ export default function ProfileBar() {
   const [isEdit, setEdit] = useState<boolean | null>(false);
   const [isFollowed, setIsFollowed] = useState<boolean | null>(null);
   const [posts, setPosts] = useState([]);
-  const { currentUser } = useSelector(currentUserSelector);
+  const { currentUser } = useAppSelector(currentUserSelector);
   const { user, isCurrentUser, paramId } = useDefineUser(currentUser); //define the user for the profile page.
-  const timelinePosts = useSelector(timelinePostsSelector);
+  const timelinePosts = useAppSelector(timelinePostsSelector);
 
   //check if the user is followed.
   useEffect(() => {

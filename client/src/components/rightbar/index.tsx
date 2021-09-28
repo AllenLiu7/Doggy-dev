@@ -6,8 +6,8 @@ import SponsorsCard from './sponsersCard';
 
 interface Props {
   isProfile?: boolean;
-  editHandler: () => void;
-  isEdit: boolean;
+  editHandler?: () => void;
+  isEdit?: boolean;
 }
 
 export default function RightBar({ isProfile, editHandler, isEdit }: Props) {

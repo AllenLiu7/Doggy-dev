@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { useAppSelector } from '../../Hook/typedReduxHook';
 import { followingUsersSelector } from '../../redux/slice/getFollowingUsers';
 import ProfilePicNameBig from '../common/profilePicNameBig';
 import { Card } from '../common/styled-components/card';
 
 export default function RightBarFriendListCard() {
-  const followings = useSelector(followingUsersSelector);
+  const followings = useAppSelector(followingUsersSelector);
 
   return (
     <CustomCard>
