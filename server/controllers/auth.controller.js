@@ -8,6 +8,7 @@ async function httpRegisterUser(req, res, next) {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
+      ``;
       return next(createError(400, 'email exists'));
     }
 
@@ -25,12 +26,12 @@ async function httpLoginUser(req, res, next) {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-      return next(createError(400, 'wrong username or password 1'));
+      return next(createError(400, 'Invalid username or password !'));
     }
 
     const valid = await user.isValidPassword(req.body.password);
     if (!valid) {
-      return next(createError(400, 'wrong username or password 2'));
+      return next(createError(400, 'Invalid username or password !'));
     }
 
     //generate access token
