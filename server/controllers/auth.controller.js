@@ -8,14 +8,26 @@ async function httpRegisterUser(req, res, next) {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
-      ``;
       return next(createError(400, 'email exists'));
     }
 
     const newUser = await new User(req.body);
     await newUser.save();
 
-    return res.status(200).json(newUser);
+    console.log(newUser);
+
+    //generate access token
+    const accessToken = await genAccessToken(newUser._id);
+    //refresh token store in redis
+    const refreshToken = await genRefreshToken(newUser._id);
+
+    console.log(refreshToken);
+
+    res.cookie('refreshToken', refreshToken, { httpOnly: true });
+
+    const { password, ...others } = newUser._doc;
+
+    return res.status(200).json({ currentUser: others, token: accessToken });
   } catch (err) {
     return next(createError(500, err));
   }
@@ -36,7 +48,7 @@ async function httpLoginUser(req, res, next) {
 
     //generate access token
     const accessToken = await genAccessToken(user._id);
-    //refresh token should be store in db, such as redis
+
     const refreshToken = await genRefreshToken(user._id);
 
     res.cookie('refreshToken', refreshToken, { httpOnly: true });

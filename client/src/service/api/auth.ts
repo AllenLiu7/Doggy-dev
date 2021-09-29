@@ -13,7 +13,9 @@ export const refreshTokenReq = () => {
 };
 
 export const registerUserReq = (data) => {
-  return axiosClient.post('/auth/register', JSON.stringify(data));
+  return axiosClient.post('/auth/register', JSON.stringify(data), {
+    withCredentials: true,
+  });
 };
 
 export const checkUsernameReq = (data) => {
