@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sideBar initial state renders 1`] = `
+<Fragment>
+  <styled.div>
+    <SideBarLinkList
+      show={false}
+    />
+    <styled.button
+      onClick={[Function]}
+    >
+      Show more
+    </styled.button>
+    <styled.hr
+      width="90%"
+    />
+    <SideBarFriendList />
+  </styled.div>
+</Fragment>
+`;
