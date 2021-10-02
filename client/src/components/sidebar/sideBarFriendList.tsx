@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useAppSelector } from '../../Hook/typedReduxHook';
 import { recommandUsersSelector } from '../../redux/slice/getRecommandUsers';
-import { User } from '../../types/common';
+import { User } from '../../types/common.type';
 import ProfilePicName from '../common/profilePicName';
 
 export default function SideBarFriendList() {

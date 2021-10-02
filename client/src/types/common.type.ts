@@ -13,8 +13,8 @@ export interface User {
   coverPicture?: string;
   createdAt: string;
   email: string;
-  followers: Array<string>;
-  followings: Array<string>;
+  followers: Array<string> | null | undefined;
+  followings: Array<string> | null | undefined;
   from: string;
   isAdmin: boolean;
   profilePicture: string;

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { getRecommandUsersReq } from '../../service/api/user';
-import { User } from '../../types/common';
+import { User } from '../../types/common.type';
 import { RootState } from '../store';
 import { follow } from './user';
 

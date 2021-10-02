@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { getUserReq } from '../service/api/user';
-import { User } from '../types/common';
+import { User } from '../types/common.type';
 
 //fetch user info base on userId
 

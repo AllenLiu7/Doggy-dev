@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '../Hook/typedReduxHook';
 import {
   clearState,
   currentUserSelector,
+  loginFormData,
   loginUserThunk,
   updateToken,
 } from '../redux/slice/user';
@@ -68,7 +69,7 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: loginFormData) => {
     dispatch(loginUserThunk(data));
   };
 

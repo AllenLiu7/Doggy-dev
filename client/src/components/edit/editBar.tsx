@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from '../../Hook/typedReduxHook';
 import { currentUserSelector, updateUser } from '../../redux/slice/user';
 import { uploadProfilePicReq } from '../../service/api/upload';
 import { editProfileReq } from '../../service/api/user';
-import { EditFormData } from '../../types/common';
+import { EditFormData } from '../../types/common.type';
 import { Card } from '../common/styled-components/card';
 const IMAGE = process.env.S3_IMAGES;
 

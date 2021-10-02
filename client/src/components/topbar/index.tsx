@@ -27,8 +27,9 @@ export default function TopBar() {
       try {
         const response = await refreshTokenReq();
         const newToken = response.data.token;
+
         if (newToken) {
-          dispatch(updateToken(response.data));
+          dispatch(updateToken(newToken));
 
           axiosJWT.defaults.headers.common['authorization'] =
             'Bearer ' + newToken;

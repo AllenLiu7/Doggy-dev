@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { useUserInfo } from '../../Hook/useUserInfo';
 import { currentUserSelector } from '../../redux/slice/user';
 import { updateLikeReq } from '../../service/api/post';
-import { Post } from '../../types/common';
+import { Post } from '../../types/common.type';
 import PostMenu from '../common/postMenu';
 import ProfileHead from '../common/profilePicName';
 import PostCardComment from './postCardComment';

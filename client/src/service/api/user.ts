@@ -1,4 +1,4 @@
-import { EditProfileReqData } from '../../types/common';
+import { EditProfileReqData } from '../../types/common.type';
 import { axiosClient, axiosJWT } from './index';
 
 export const getUserReq = (id: string) => {
