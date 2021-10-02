@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -33,10 +33,9 @@ export default function EditBar() {
   );
   const image = register('image'); // for react hook form overide bug
 
-  const handleProfilePicChange = (
-    event: React.ChangeEvent<HTMLInputElement> | null
-  ) => {
-    setFile(URL.createObjectURL(event?.target.files[0]));
+  const handleProfilePicChange = (e?: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files[0];
+    setFile(URL.createObjectURL(file));
   };
 
   const onSubmit = async (data: EditFormData) => {

@@ -9,8 +9,8 @@ interface userSlice {
   isLoading: boolean;
   isSuccess: boolean;
   isError: boolean;
-  errorMessage: string | null | undefined;
-  currentUser: User | null | undefined;
+  errorMessage: string | null;
+  currentUser: User | null;
   token: string | null;
 }
 
@@ -21,7 +21,7 @@ interface authResponse {
 
 interface reqError {
   status: boolean;
-  message: string;
+  message: string | null;
 }
 
 export const initialState: userSlice = {
@@ -109,7 +109,7 @@ const { reducer, actions } = createSlice({
       console.log(action.payload);
       state.isLoading = false;
       state.isError = true;
-      state.errorMessage = action?.payload?.message;
+      state.errorMessage = action.payload.message;
     });
     builder.addCase(signUpUser.fulfilled, (state, action) => {
       state.currentUser = action.payload.currentUser;
@@ -123,7 +123,7 @@ const { reducer, actions } = createSlice({
     builder.addCase(signUpUser.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
-      state.errorMessage = action?.payload?.message;
+      state.errorMessage = action.payload.message;
     });
   },
 });

@@ -1,10 +1,11 @@
+import { createNewPostType } from '../../types/common.type';
 import { axiosClient } from './index';
 
-export const newPostReq = (newPost) => {
+export const newPostReq = (newPost: createNewPostType) => {
   return axiosClient.post(`post`, newPost);
 };
 
-export const getTimelinePostsReq = (id: string) => {
+export const getTimelinePostsReq = (id: string | undefined) => {
   return axiosClient.get(`post/timeline/${id}`);
 };
 

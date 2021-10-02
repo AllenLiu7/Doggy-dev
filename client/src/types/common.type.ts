@@ -8,6 +8,12 @@ export interface Post {
   _v: number;
 }
 
+export interface createNewPostType {
+  userId: string | undefined;
+  desc?: string;
+  img?: string;
+}
+
 export interface User {
   city?: string;
   coverPicture?: string;

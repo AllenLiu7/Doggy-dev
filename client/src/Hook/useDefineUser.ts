@@ -2,14 +2,19 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { getUserReq } from '../service/api/user';
+import { User } from '../types/common.type';
+
+interface userIdParams {
+  userId: string;
+}
 
 //set the user according to the comparison of the currentUser._id with the id in the params.
 
-export const useDefineUser = (currentUser) => {
+export const useDefineUser = (currentUser: User) => {
   const [user, setUser] = useState({});
   const [isCurrentUser, setIsCurrentUser] = useState(true);
 
-  const { userId: paramId } = useParams();
+  const { userId: paramId } = useParams<userIdParams>();
 
   useEffect(() => {
     const defineUser = async () => {

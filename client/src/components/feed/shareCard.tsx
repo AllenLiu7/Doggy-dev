@@ -15,7 +15,7 @@ import ShareOptions from './shareOptions';
 export default function ShareCard() {
   const { currentUser } = useAppSelector(currentUserSelector);
   const dispatch = useAppDispatch();
-  const desc = useRef(null);
+  const desc = useRef<HTMLInputElement>(null);
 
   const [isAttatch, setIsAttatch] = useState(false);
 
@@ -27,8 +27,9 @@ export default function ShareCard() {
     e.preventDefault();
     const file = e.target[0].files[0];
     const newPost = {
-      userId: currentUser._id,
-      desc: desc?.current.value,
+      userId: currentUser?._id,
+      desc: desc?.current?.value,
+      img: '',
     };
 
     //upload image to server and get back the file name
@@ -47,7 +48,7 @@ export default function ShareCard() {
     //creat post
     try {
       await newPostReq(newPost);
-      dispatch(fetchTimelinePosts(currentUser._id));
+      dispatch(fetchTimelinePosts(currentUser?._id));
     } catch (err) {}
   };
 
@@ -57,8 +58,8 @@ export default function ShareCard() {
         <StyledProfilePic
           height='45px'
           width='45px'
-          src={currentUser.profilePicture}
-          userId={currentUser._id}
+          src={currentUser?.profilePicture}
+          userId={currentUser?._id}
         />
         <InputWrapper>
           <Input placeholder='What is in your mind?' ref={desc} />

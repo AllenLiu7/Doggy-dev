@@ -3,10 +3,10 @@ const IMAGE = process.env.S3_IMAGES;
 
 interface Props {
   src: string;
-  userId: string;
-  height: string;
-  width: string;
-  borderRadius: string;
+  userId?: string;
+  height?: string;
+  width?: string;
+  borderRadius?: string;
 }
 
 export const StyledProfilePic = styled.img.attrs(
@@ -18,6 +18,7 @@ export const StyledProfilePic = styled.img.attrs(
     height: height || '30px',
     width: width || '30px',
     borderRadius: borderRadius || '50%',
+    userId,
   })
 )`
   height: ${(props) => props.height};

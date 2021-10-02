@@ -12,7 +12,7 @@ export const initialState = {
 //get all posts
 export const fetchTimelinePosts = createAsyncThunk(
   'timelinePosts/fetchTimelinePosts', //name of your slice plus the name of thunk creator
-  async (id: string) => {
+  async (id: string | undefined) => {
     try {
       const response = await getTimelinePostsReq(id);
       return response.data;
